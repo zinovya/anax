@@ -10,6 +10,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/open-horizon/anax/config"
 	"github.com/open-horizon/anax/policy"
+	"github.com/open-horizon/anax/version"
 	"io/ioutil"
 	"net/http"
 	"reflect"
@@ -1252,6 +1253,7 @@ func InvokeExchange(httpClient *http.Client, method string, url string, user str
 		return errors.New(fmt.Sprintf("Invocation of %v at %v with %v failed creating HTTP request, error: %v", method, url, requestBody, err)), nil
 	} else {
 		req.Close = true // work around to ensure that Go doesn't get connections confused. Supposed to be fixed in Go 1.6.
+		req.Header.Add("X-Anax-Dist-Version", version.AnaxDistVersion)
 		req.Header.Add("Accept", "application/json")
 		if method != "GET" {
 			req.Header.Add("Content-Type", "application/json")

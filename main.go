@@ -15,6 +15,7 @@ import (
 	"github.com/open-horizon/anax/governance"
 	"github.com/open-horizon/anax/policy"
 	"github.com/open-horizon/anax/torrent"
+	"github.com/open-horizon/anax/version"
 	"github.com/open-horizon/anax/worker"
 	"os"
 	"os/signal"
@@ -72,6 +73,8 @@ func eventHandler(incoming events.Message, workers *worker.MessageHandlerRegistr
 // and the workers can be fired up.
 //
 func main() {
+	glog.V(2).Infof("Running AnaxDistVersion: %s", version.AnaxDistVersion)
+
 	configFile := flag.String("config", "/etc/colonus/anax.config", "Config file location")
 	cpuprofile := flag.String("cpuprofile", "", "write cpu profile to file")
 

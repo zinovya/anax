@@ -10,6 +10,7 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/open-horizon/anax/config"
+	"github.com/open-horizon/anax/version"
 )
 
 type Configuration struct {
@@ -17,6 +18,7 @@ type Configuration struct {
 }
 
 type Info struct {
+	DistVersion   string          `json:"dist_version"`
 	Geths         []Geth          `json:"geth"`
 	Configuration *Configuration  `json:"configuration"`
 	Connectivity  map[string]bool `json:"connectivity"`
@@ -24,7 +26,8 @@ type Info struct {
 
 func NewInfo(config *config.HorizonConfig) *Info {
 	return &Info{
-		Geths: []Geth{},
+		DistVersion: version.AnaxDistVersion,
+		Geths:       []Geth{},
 		Configuration: &Configuration{
 			ExchangeAPI: config.Edge.ExchangeURL,
 		},
