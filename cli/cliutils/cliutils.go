@@ -56,6 +56,18 @@ func Verbose(msg string, args ...interface{}) {
 	fmt.Fprintf(os.Stderr, "[verbose] "+msg, args...) // send to stderr so it doesn't mess up stdout if they are piping that to jq or something like that
 }
 
+func Info(msg string) {
+	fmt.Fprintf(os.Stderr, fmt.Sprintf("Info: %v", msg))
+}
+
+func Warn(msg string) {
+	fmt.Fprintf(os.Stderr, fmt.Sprintf("Warn: %v", msg))
+}
+
+func Error(msg string) {
+	fmt.Fprintf(os.Stderr, fmt.Sprintf("Error: %v", msg))
+}
+
 func Fatal(exitCode int, msg string, args ...interface{}) {
 	if !strings.HasSuffix(msg, "\n") {
 		msg += "\n"

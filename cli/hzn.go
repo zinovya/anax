@@ -100,8 +100,8 @@ func main() {
 		register.DoIt(*org, *pattern, *nodeIdTok, *userPw, *email, *inputFile)
 	case keyListCmd.FullCommand():
 		key.List()
-	//case keyCmd.FullCommand():   // <- I'd like to just default to list in this case, but don't know how to do that yet
-	//	keyCmd.List()
+		//	case keyCmd.FullCommand(): // <- I'd like to just default to list in this case, but don't know how to do that yet
+		//		keyCmd.List()
 	case nodeListCmd.FullCommand():
 		node.List()
 	case agreementListCmd.FullCommand():
