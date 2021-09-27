@@ -15,7 +15,9 @@ Provides: horizon = %{version}
 
 # Note: in RHEL/CentOS 8.x, docker-ce does not automatically install cleanly.
 #	Must do this manually *before* installing this horizon pkg: https://linuxconfig.org/how-to-install-docker-in-rhel-8
-Requires: horizon-cli docker-ce iptables jq
+#Requires: horizon-cli docker-ce iptables jq
+
+Requires: horizon-cli iptables jq
 
 #Prefix: /usr/horizon
 #Vendor: ?
